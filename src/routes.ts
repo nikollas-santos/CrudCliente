@@ -4,6 +4,8 @@ import { CreateClienteController } from "./controllers/cliente/CreateClienteCont
 
 const router = Router ();
 
+
+//rotas cliente
 router.post('/clientes', new CreateClienteController().handle)
 
 

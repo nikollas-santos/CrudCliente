@@ -1,9 +1,19 @@
 import {Request, Response, response} from 'express'
+import { CreateClienteService } from '../../services/cliente/CreateClienteService';
 
 
 class CreateClienteController {
     async handle (req:Request, res: Response){
-        return res.json({ok:true})
+      const {name, email, endereco} = req.body;
+      
+      const createClienteService = new CreateClienteService
+
+      const cliente = await createClienteService.execute({
+        name, 
+        email,
+        endereco
+      });
+        return res.json(cliente)
     }
 }
 
