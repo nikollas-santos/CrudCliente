@@ -22,6 +22,20 @@ class CreateClienteService {
             throw new Error ("Cliente already exists")
         }
 
+        //verificar se esse nome já esta cadastrado
+
+        const userNameAltreadyExists = await prismaClient.cliente.findFirst({
+            where:{
+               name
+            }
+          })
+          
+           if(userNameAltreadyExists){
+            throw new Error ("User Name already exists")
+           }else {
+            console.log("Falha!"); 
+          }
+
         const cliente = await prismaClient.cliente.create({
             data:{
                 name:name,
@@ -35,6 +49,7 @@ class CreateClienteService {
                 endereco:true
             }
         })
+        
 
         return cliente
     }
