@@ -32,9 +32,7 @@ class CreateClienteService {
           
            if(userNameAltreadyExists){
             throw new Error ("User Name already exists")
-           }else {
-            console.log("Falha!"); 
-          }
+           }
 
         const cliente = await prismaClient.cliente.create({
             data:{
