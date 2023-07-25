@@ -3,7 +3,6 @@ import prismaClient from "../../prisma";
 interface ClientRequest {
     id: string;
 }
-
 class DeletarClienteService {
     async execute(objeto: ClientRequest) {
         // Verificar se o cliente com o ID fornecido existe no banco
@@ -16,7 +15,6 @@ class DeletarClienteService {
         if (!clienteExistente) {
             throw new Error("Cliente não encontrado na base de dados"); // Lançar um erro caso o cliente não exista
         }
-
         // Se o cliente existir, excluir
         const removecliente = await prismaClient.cliente.delete({
             where: {
